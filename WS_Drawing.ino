@@ -308,10 +308,12 @@ void drawSmallTS(int x) //jam kecil  ketika sholat
 void drawGreg_TS(uint16_t y)   // Draw Time
   {
     char  Buff[20];
-    int Dtk = now.second();
-    if(Dtk % 2){ sprintf(Buff,"%02d:%02d",now.hour(),now.minute()); }
-    else        { sprintf(Buff,"%02d %02d",now.hour(),now.minute()); }
-    //sprintf(Buff,"%02d:%02d:%02d",now.hour(),now.minute(),now.second());
+    //int Dtk = now.second();
+//    if(Dtk % 2){ sprintf(Buff,"%02d:%02d",now.hour(),now.minute()); }
+//    else        { sprintf(Buff,"%02d %02d",now.hour(),now.minute()); }
+   //sprintf(Buff,"%02d:%02d:%02d",now.hour(),now.minute(),now.second());
+
+    sprintf(Buff,"%02d:%02d:%02d",now.hour(),now.minute(),now.second());
     
     dwCtr(0,y,Buff);
     DoSwap = true; 

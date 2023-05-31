@@ -133,7 +133,7 @@ char * drawDayDate()
 
 char *  drawMasjidName()
   {
-      static char  bufMN[] = "MUSHOLLA SABIYLU.EL MUHTADIYN";
+      static char  bufMN[] = "MUSHOLLA WAQOF DARUSSALAM KEMPRENG RT31/RW04";
 //      static char  out[85];
 //      char  locBuff[10];
 //      int   locLen = (Prm.MT-1)*10;
