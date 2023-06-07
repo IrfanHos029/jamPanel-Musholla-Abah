@@ -134,26 +134,21 @@ char * drawDayDate()
 char *  drawMasjidName()
   {
       static char  bufMN[] = "MUSHOLLA WAQOF DARUSSALAM KEMPRENG RT31/RW04";
-//      static char  out[85];
-//      char  locBuff[10];
-//      int   locLen = (Prm.MT-1)*10;
-//      memccpy_P(locBuff,MT_Name_E+locLen  ,0,10);
-//      //EEPROM.get(55,bufMN);
-//      sprintf(out,"%s %s\0",locBuff,bufMN);
+
       return bufMN;
   }
  
 char *  drawInfo()
   {
-      static char  out[150] = "Luruskan dan Rapatkan Shaff Sholat";
-      //EEPROM.get(addr,out);
+      static char  out[] = "LURUSKAN DAN RAPATKAN SHAFF SHOLAT";
+     
       return out;
   }
 
 char * drawCounterBack()
 {
 static char out[30];
-static char text[] = "menuju waktu";     
+static char text[] = "MENUJU WAKTU";     
 sprintf(out,"%s %s",text,sholatt[cekNext]);
 return out;
 }

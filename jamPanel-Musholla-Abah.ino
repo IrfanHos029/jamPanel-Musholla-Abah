@@ -101,7 +101,7 @@ float latitude =  -7.364057;
 float longitude = 112.646222;
 float timezone = +07.00;
 float ketinggian = 50;
-char Hari[7][12] = {"SENIN","SELASA","RABU","KAMIS","JUM'AT","SABTU","MINGGU"};
+char Hari[7][12] = {"MINGGU","SENIN","SELASA","RABU","KAMIS","JUM'AT","SABTU"};
 char *sholatt[] = {"IMSAK","SUBUH","TERBIT","DHUHA","DZUHUR ","ASHAR","MAGRIB","ISYA"};
 //=======================================
 //===SETUP=============================== 
@@ -144,18 +144,18 @@ void loop()
     // List of Display Component Block =========
     // =========================================
     anim_JG(1);                                                 // addr: 1 show date time
-    dwMrq(drawMasjidName(),70,2,2);                             // addr: 2 show Masjid Name
-    dwMrq(drawDayDate()   ,70,1,3);                             // addr: 3 show Hijriah date
+    dwMrq(drawMasjidName(),45,2,2);                             // addr: 2 show Masjid Name
+    dwMrq(drawDayDate()   ,45,1,3);                             // addr: 3 show Hijriah date
    // dwMrq(msgPuasa(hd_puasa,ty_puasa),75,0,4);                  // addr: 5 show Remander Puasa
     drawSholat(5);                                              // addr: 5 show sholat time
-    dwMrq(drawInfo()    ,70,1,6);                             // addr: 6 show Info 1
-     dwMrq(drawCounterBack(),60,3,7);
+    dwMrq(drawInfo()    ,45,1,6);                             // addr: 6 show Info 1
+     dwMrq(drawCounterBack(),45,3,7);
     // anim_DT(7);                                                 // addr: 7 show date time    
     //dwMrq(drawInfo(280)   ,75,2,8);                             // addr: 8 show Info 2
   //  drawSholat(9);                                              // addr: 9 show sholat time
 //    dwMrq(drawInfo(430)   ,75,1,10);                            // addr: 10 show Info 3
   
- 
+ Serial.println(String() + "time:" + floatnow);
     drawAzzan(100);                                             // addr: 100 show Azzan
     drawIqomah(101);                                            // addr: 101 show Iqomah
 //    dwMrq(drawInfo(580),50,0,102); //Message Sholat biasa       // addr: 202 show Message Sholah
@@ -206,7 +206,7 @@ void loop()
 // =========================================
 void Disp_init() 
   { Disp.setDoubleBuffer(true);
-    Timer1.initialize(2000);
+    Timer1.initialize(1500);
     Timer1.attachInterrupt(scan);
     setBrightness(200);
     fType(1);  
@@ -251,7 +251,7 @@ void update_All_data()
   if(floatnow>sholatT[6]) {date_cor = 1;}                     // load Hijr Date + corection next day after Mhagrib 
   nowH = toHijri(now.year(),now.month(),now.day(),date_cor);  // load Hijir Date
   
-  if ((floatnow > (float)21.00) or (floatnow < (float)3.30) )    {setBrightness(15);}
+  if ((floatnow > (float)22.00) or (floatnow < (float)3.00) )    {setBrightness(20);}
       else                                                   {setBrightness(200);}  
      /////// Serial.println((float)3.5);
   }
@@ -269,7 +269,7 @@ void check_azzan()
                 SholatNow = i;
                 if(!azzan and (floatnow > sholatT[i]) and (floatnow < (sholatT[i]+0.01))) 
                   { 
-                    if(daynow ==   5 and SholatNow ==4) {jumat=true;}
+                    if(daynow ==  6 and SholatNow ==4) {jumat=true;}
                     azzan =true;
                     RunSel = 100;
                   }  

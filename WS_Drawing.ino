@@ -399,6 +399,7 @@ void anim_JG(int DrawAdd)
     
     Jam_GD(17-y);      
     }
+unsigned long lss=0;
 void dwMrq(const char* msg, int Speed, int dDT, int DrawAdd) //running teks ada jam nya
   { 
     // check RunSelector
@@ -407,11 +408,11 @@ void dwMrq(const char* msg, int Speed, int dDT, int DrawAdd) //running teks ada 
     if (reset_x !=0) { x=0;reset_x = 0;}      
     
        
-    static uint16_t   lsRn;
+   // static uint16_t   lsRn;
     int fullScroll = Disp.textWidth(msg) + DWidth;    
-    uint16_t          Tmr = millis();
-    if((Tmr-lsRn)> Speed)
-      { lsRn=Tmr;
+    uint32_t          Tmr = millis();
+    if((Tmr-lss)> Speed)
+      { lss=Tmr;
         if (x < fullScroll) {++x;}
         else {  dwDone(DrawAdd); 
                 x = 0;return;}
